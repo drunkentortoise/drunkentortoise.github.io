@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title></title>
+        <link>undefined</link>
+        <description>undefined</description>
+        <lastBuildDate>Mon, 08 Aug 2022 22:20:22 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Joplin Pages Publisher</generator>
+        <item>
+            <title><![CDATA[OSINT Tools]]></title>
+            <guid>61e2fd3411c340ccba062ee8d585adc1</guid>
+            <pubDate>Fri, 11 Mar 2022 14:22:06 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="brief">Brief</h1>
+<p>OSINT (open-source intelligence) is a branch of intelligence that analyzes information about people or organizations from sources available to the public.
+Britain and the United States actively used OSINT during WWII, with special units monitoring enemy broadcasts. Today, OSINT methodology is employed not only in foreign policy, but also in information security.
+Cybersecurity professionals collect information from open sources to :</p>
+<ul>
+<li>Assess the security of an object and determine the attack surface so as to counter threats more effectively;</li>
+<li>Detect data leaks;</li>
+<li>Identify threats in preparation, their sources and vectors.</li>
+</ul>
+<h2 id="user-osint">User OSINT</h2>
+<p><a title="https://github.com/WebBreacher/WhatsMyName" href="https://github.com/WebBreacher/WhatsMyName">https://github.com/WebBreacher/WhatsMyName</a>
+<a title="https://namechk.com/" href="https://namechk.com/">https://namechk.com/</a>
+<a title="https://whatsmyname.app/" href="https://whatsmyname.app/">https://whatsmyname.app/</a>
+<a title="https://github.com/sherlock-project/sherlock" href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a>
+<a title="https://github.com/khast3x/h8mail" href="https://github.com/khast3x/h8mail">https://github.com/khast3x/h8mail</a>
+<a title="https://github.com/laramies/theHarvester" href="https://github.com/laramies/theHarvester">https://github.com/laramies/theHarvester</a></p>
+<h2 id="dns-osint">DNS OSINT</h2>
+<p><a title="https://dnsdumpster.com/" href="https://dnsdumpster.com/">https://dnsdumpster.com/</a>
+<a title="https://securitytrails.com" href="https://securitytrails.com">https://securitytrails.com</a>
+<a title="https://crt.sh" href="https://crt.sh">https://crt.sh</a>
+<a title="https://www.virustotal.com/gui/home/search" href="https://www.virustotal.com/gui/home/search">https://www.virustotal.com/gui/home/search</a> || Click on Relations button
+<a title="https://github.com/darkoperator/dnsrecon" href="https://github.com/darkoperator/dnsrecon">https://github.com/darkoperator/dnsrecon</a>
+<a title="https://github.com/aboul3la/Sublist3r" href="https://github.com/aboul3la/Sublist3r">https://github.com/aboul3la/Sublist3r</a>
+<a title="https://github.com/OWASP/Amass" href="https://github.com/OWASP/Amass">https://github.com/OWASP/Amass</a></p>
+<h2 id="web-based-host-osint">Web based Host OSINT</h2>
+<p><a title="https://search.censys.io/" href="https://search.censys.io/">https://search.censys.io/</a>
+<a title="https://www.shodan.io/" href="https://www.shodan.io/">https://www.shodan.io/</a>
+<a title="https://archive.org/web/" href="https://archive.org/web/">https://archive.org/web/</a>
+<a title="https://github.com/lanmaster53/recon-ng" href="https://github.com/lanmaster53/recon-ng">https://github.com/lanmaster53/recon-ng</a></p>
+<h2 id="wi-fi-osint">Wi-Fi OSINT</h2>
+<h3 id="tinycheck-httpsgithubcomkasperskylabtinycheck"><code>TinyCheck</code> | <a title="https://github.com/KasperskyLab/TinyCheck" href="https://github.com/KasperskyLab/TinyCheck">https://github.com/KasperskyLab/TinyCheck</a></h3>
+<p><em>Easily capture network communications from a smartphone or any device that can be associated with a Wi-Fi access point for quick analysis.</em></p>
+]]></content:encoded>
+        </item>
+    </channel>
+</rss>
