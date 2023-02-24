@@ -1,17 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-    <channel>
-        <title></title>
-        <link>undefined</link>
-        <description>undefined</description>
-        <lastBuildDate>Fri, 24 Feb 2023 20:24:44 GMT</lastBuildDate>
-        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <generator>Joplin Pages Publisher</generator>
-        <item>
-            <title><![CDATA[LLMNR/NBT-NS Poisoning]]></title>
-            <guid>742e647f702e429bb6c50466e8dee254</guid>
-            <pubDate>Tue, 18 Oct 2022 13:13:03 GMT</pubDate>
-            <content:encoded><![CDATA[<h1 id="brief">Brief</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="/_assets/main.css" />
+
+    <title>LLMNR/NBT-NS Poisoning - hack</title>
+  <link rel="stylesheet" href="/_markdown_plugin_assets/highlight.js/atom-one-light.css" /></head>
+  <body>
+    <div class="main">
+      <nav class="navigation">
+        <a href="/">hack</a>
+      </nav>
+      <article>
+        <header>
+          <h1 class="article-title">LLMNR/NBT-NS Poisoning</h1>
+          <div class="article-info">
+            <div>
+              <span
+                >Created At：<time datetime="1666098783717"
+                  >2022-10-18 15:13</time
+                ></span
+              >
+              <span
+                >Updated At：<time datetime="1666099120614"
+                  >2022-10-18 15:18</time
+                ></span
+              >
+            </div>
+            
+          </div>
+        </header>
+        <div class="article-content markdown-body"><h1 id="brief">Brief</h1>
 <p>Exploiting weaknesses in name resolution protocols is a common technique for performing man-in-the-middle (MITM) attacks. Two particularly vulnerable name resolution protocols are Link-Local Multicast Name Resolution (<strong>LLMNR</strong>) and NetBIOS Name Service (<strong>NBNS</strong>). Attackers leverage both of these protocols to respond to requests that fail to be answered through higher priority resolution methods, such as DNS. The default enabled status of LLMNR and NBNS within Active Directory (AD) environments allows this type of spoofing to be an extremely effective way to both gain initial access to a domain, and also elevate domain privilege during post exploitation efforts.</p>
 <p>First, without implementing some router based wizardry, LLMNR and NBNS requests are contained within a single multicast or broadcast domain respectively. This can greatly limit the scope of a spoofing attack with regards to both the affected systems and potential privilege of the impacted sessions.</p>
 <p>Second, by default, Windows systems use the following priority list while attempting to resolve name resolution requests through network based protocols:</p>
@@ -28,7 +49,8 @@
 At this point, you have two options, either relay the hash to try and have an open session or you can take the hash and try to crack it offline by running hashcat on it using the following command (depending on where you're running it, its best to run it on your host system) :</p>
 <div><pre class="hljs"><code>hashcat -m 5600 hashes.txt dictionary.txt</code></pre></div>
 <p>Check for more : <a>Hashcat</a></p>
-]]></content:encoded>
-        </item>
-    </channel>
-</rss>
+</div>
+      </article>
+    </div>
+  </body>
+</html>
